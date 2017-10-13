@@ -45,10 +45,12 @@ class multibyte_patch {
 		'patch_wplink_js' => true,
 		'patch_word_count_js' => true,
 		'patch_force_character_count' => false,
+/* Should not be included in plugin 
 		'patch_force_twentytwelve_open_sans_off' => false,
 		'patch_force_twentythirteen_google_fonts_off' => false,
 		'patch_force_twentyfourteen_google_fonts_off' => false,
 		'patch_force_twentyfifteen_google_fonts_off' => false,
+*/
 		'patch_sanitize_file_name' => true,
 		'patch_bp_create_excerpt' => false,
 		'bp_excerpt_mblength' => 110,
@@ -291,6 +293,7 @@ class multibyte_patch {
 		return $translations;
 	}
 
+/* Should not be included in plugin 
 	function force_twentytwelve_open_sans_off() {
 		wp_dequeue_style( 'twentytwelve-fonts' );
 	}
@@ -315,6 +318,7 @@ class multibyte_patch {
 				unset( $styles->deps[$key] );
 		}
 	}
+*/
 
 	function query_based_settings() {
 		$is_query_funcs = array( 'is_feed', 'is_404', 'is_search', 'is_tax', 'is_front_page', 'is_home', 'is_attachment', 'is_single', 'is_page', 'is_category', 'is_tag', 'is_author', 'is_date', 'is_archive', 'is_paged' );
@@ -341,6 +345,7 @@ class multibyte_patch {
 		if ( false !== $this->conf['patch_force_character_count'] && 'characters' != _x( 'words', 'word count: words or characters?' ) )
 			add_filter( 'gettext_with_context', array( $this, 'force_character_count' ), 10, 3 );
 
+/* Should not be included in plugin
 		if ( false !== $this->conf['patch_force_twentytwelve_open_sans_off'] && 'twentytwelve' == get_template() ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'force_twentytwelve_open_sans_off' ), 99 );
 			add_action( 'admin_print_styles-appearance_page_custom-header', array( $this, 'force_twentytwelve_open_sans_off' ), 99 );
@@ -359,6 +364,7 @@ class multibyte_patch {
 		if ( false !== $this->conf['patch_force_twentyfifteen_google_fonts_off'] && 'twentyfifteen' == get_template() ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'force_twentyfifteen_google_fonts_off' ), 99 );
 		}
+*/
 	}
 
 	function filters() {
