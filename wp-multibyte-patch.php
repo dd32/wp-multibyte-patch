@@ -44,7 +44,7 @@ class multibyte_patch {
 		'patch_admin_custom_css' => false,
 		'patch_wplink_js' => true,
 		'patch_word_count_js' => true,
-		'patch_force_character_count' => false,
+		// 'patch_force_character_count' => false, // Overrides the translation setting for Words vs Characters
 /* Should not be included in plugin 
 		'patch_force_twentytwelve_open_sans_off' => false,
 		'patch_force_twentythirteen_google_fonts_off' => false,
@@ -289,11 +289,13 @@ class multibyte_patch {
 		$scripts->add( 'word-count', plugin_dir_url( __FILE__ ) . "js/word-count{$this->debug_suffix}.js", array( 'jquery' ),  '20131219', 1 );
 	}
 
+/* Shouldn't override translation settings
 	function force_character_count( $translations = '', $text = '', $context = '' ) {
 		if ( 'word count: words or characters?' == $context && 'words' == $text )
 			return 'characters';
 		return $translations;
 	}
+*/
 
 /* Should not be included in plugin 
 	function force_twentytwelve_open_sans_off() {
@@ -344,9 +346,10 @@ class multibyte_patch {
 
 	function filters_after_setup_theme() {
 		// add filter
+/* Shouldn't override translation settings
 		if ( false !== $this->conf['patch_force_character_count'] && 'characters' != _x( 'words', 'word count: words or characters?' ) )
 			add_filter( 'gettext_with_context', array( $this, 'force_character_count' ), 10, 3 );
-
+*/
 /* Should not be included in plugin
 		if ( false !== $this->conf['patch_force_twentytwelve_open_sans_off'] && 'twentytwelve' == get_template() ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'force_twentytwelve_open_sans_off' ), 99 );
