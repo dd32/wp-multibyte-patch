@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+// This should be within wp-admin/css/l10n.css with a `body.locale-ja`
 body *:not(textarea) {
 	font-style: normal !important;
 }
