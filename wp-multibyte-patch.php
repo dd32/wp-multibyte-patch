@@ -52,9 +52,9 @@ class multibyte_patch {
 		'patch_force_twentyfifteen_google_fonts_off' => false,
 */
 		'patch_sanitize_file_name' => true,
-		'patch_bp_create_excerpt' => false,
-		'bp_excerpt_mblength' => 110,
-		'bp_excerpt_more' => ' [&hellip;]'
+		// 'patch_bp_create_excerpt' => false, // BuddyPress
+		// 'bp_excerpt_mblength' => 110, // BuddyPress
+		// 'bp_excerpt_more' => ' [&hellip;]' // BuddyPress
 	);
 
 	var $blog_encoding = 'UTF-8';
@@ -228,6 +228,7 @@ class multibyte_patch {
 		return $text;
 	}
 
+	/* BuddyPress
 	function bp_create_excerpt( $text = '' ) {
 		return $this->trim_multibyte_excerpt( $text, $this->conf['bp_excerpt_mblength'], $this->conf['bp_excerpt_more'], $this->blog_encoding );
 	}
@@ -235,6 +236,7 @@ class multibyte_patch {
 	function bp_get_activity_content_body( $content = '' ) {
 		return preg_replace( "/<a [^<>]+>([^<>]+)<\/a>(" . preg_quote( $this->conf['bp_excerpt_more'], '/' ) . "<\/p>)$/", "$1$2", $content );
 	}
+	*/
 
 	// $excerpt param could already be truncated to 20 words or less by the original get_comment_excerpt() function.
 	// $comment param (introduced in WP 4.1) should be used instead.
@@ -385,10 +387,12 @@ class multibyte_patch {
 		if ( false !== $this->conf['patch_sanitize_file_name'] )
 			add_filter( 'sanitize_file_name', array( $this, 'sanitize_file_name' ) );
 
+		/* BuddyPress
 		if ( false !== $this->conf['patch_bp_create_excerpt'] ) {
 			add_filter( 'bp_create_excerpt', array( $this, 'bp_create_excerpt' ), 99 );
 			add_filter( 'bp_get_activity_content_body', array( $this, 'bp_get_activity_content_body' ), 99 );
 		}
+		*/
 
 		if ( method_exists( $this, 'wp_trim_words' ) && false !== $this->conf['patch_wp_trim_words'] )
 			add_filter( 'wp_trim_words', array( $this, 'wp_trim_words' ), 99, 4 );
