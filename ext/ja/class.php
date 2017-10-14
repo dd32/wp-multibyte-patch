@@ -114,6 +114,7 @@ if ( class_exists( 'multibyte_patch' ) ) :
 		}
 	}
 
+	// Convert "zen-kaku" space to "han-kaku" (U+3000 -> U+0020) ???
 	function process_search_terms() {
 		$blog_encoding = $this->blog_encoding;
 
