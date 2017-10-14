@@ -140,7 +140,7 @@ if ( class_exists( 'multibyte_patch' ) ) :
 			return $encoding;
 	}
 
-	// This should be within wp-admin/css/l10n.css with a `.locale-ja`
+/* This should be within wp-admin/css/l10n.css with a `.locale-ja`
 	function admin_custom_css() {
 		if ( empty( $this->conf['admin_custom_css_url'] ) )
 			$url = plugin_dir_url( __FILE__ ) . 'admin.css';
@@ -149,7 +149,8 @@ if ( class_exists( 'multibyte_patch' ) ) :
 
 		wp_enqueue_style( 'wpmp-admin-custom', $url, array(), '20131223' );
 	}
-
+*/
+		
 /* No longer needed.
 	function wp_trim_words( $text = '', $num_words = 110, $more = '', $original_text = '' ) {
 		// Translation no longer exists since 4.3 / #30966
