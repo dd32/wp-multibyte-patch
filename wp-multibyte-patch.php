@@ -39,7 +39,7 @@ class multibyte_patch {
 		// 'patch_wp_trim_excerpt' => true, // Shouldn't be needed anymore
 		// 'patch_wp_trim_words' => false, // Shouldn't be needed anymore
 		// 'patch_get_comment_excerpt' => true, // Should be done with an excerpt filter
-		'patch_dashboard_recent_drafts' => true,
+		// 'patch_dashboard_recent_drafts' => true, // Not needed
 		'patch_process_search_terms' => false,
 		// 'patch_admin_custom_css' => false, // Any locale-specific CSS should be in core
 		'patch_wplink_js' => true,
