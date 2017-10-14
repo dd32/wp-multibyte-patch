@@ -150,6 +150,7 @@ if ( class_exists( 'multibyte_patch' ) ) :
 	}
 
 	function wp_trim_words( $text = '', $num_words = 110, $more = '', $original_text = '' ) {
+		// Translation no longer exists since 4.3 / #30966
 		if ( 'characters' != _x( 'words', 'word count: words or characters?' ) )
 			return $text;
 
@@ -157,6 +158,8 @@ if ( class_exists( 'multibyte_patch' ) ) :
 		if( false !== $this->conf['patch_dashboard_recent_drafts'] && 10 === $num_words && is_admin() && strpos( wp_debug_backtrace_summary(), 'wp_dashboard_recent_drafts' ) )
 			$num_words = $this->conf['dashboard_recent_drafts_mblength'];
 
+		// Should not be needed since 3.4 / #16079
+		// Sould use the excerpt_length filter instead perhaps.
 		$text = $original_text;
 		$text = wp_strip_all_tags( $text );
 		$text = trim( preg_replace( "/[\n\r\t ]+/", ' ', $text ), ' ' );
