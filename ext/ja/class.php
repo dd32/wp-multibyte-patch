@@ -140,6 +140,7 @@ if ( class_exists( 'multibyte_patch' ) ) :
 			return $encoding;
 	}
 
+	// This should be within wp-admin/css/l10n.css with a `.locale-ja`
 	function admin_custom_css() {
 		if ( empty( $this->conf['admin_custom_css_url'] ) )
 			$url = plugin_dir_url( __FILE__ ) . 'admin.css';
