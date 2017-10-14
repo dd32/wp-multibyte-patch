@@ -36,9 +36,9 @@ class multibyte_patch {
 		'patch_wp_mail' => false,
 		'patch_incoming_trackback' => false,
 		'patch_incoming_pingback' => false,
-		'patch_wp_trim_excerpt' => true,
-		'patch_wp_trim_words' => false,
-		'patch_get_comment_excerpt' => true,
+		// 'patch_wp_trim_excerpt' => true, // Shouldn't be needed anymore
+		// 'patch_wp_trim_words' => false, // Shouldn't be needed anymore
+		// 'patch_get_comment_excerpt' => true, // Should be done with an excerpt filter
 		'patch_dashboard_recent_drafts' => true,
 		'patch_process_search_terms' => false,
 		// 'patch_admin_custom_css' => false, // Any locale-specific CSS should be in core
@@ -379,13 +379,17 @@ class multibyte_patch {
 		if ( false !== $this->conf['patch_incoming_pingback'] )
 			add_filter( 'pre_remote_source', array( $this, 'pre_remote_source' ), 10, 2 );
 
+		/* Should be done with a more specific filter
 		if ( false !== $this->conf['patch_wp_trim_excerpt'] ) {
 			add_filter( 'excerpt_length', array( $this, 'excerpt_mblength' ), 99 );
 			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ), 9 );
 		}
+		*/
 
+		/* Should be done with a more specific filter
 		if ( false !== $this->conf['patch_get_comment_excerpt'] )
 			add_filter( 'get_comment_excerpt', array( $this, 'get_comment_excerpt' ) );
+		*/
 
 		if ( false !== $this->conf['patch_sanitize_file_name'] )
 			add_filter( 'sanitize_file_name', array( $this, 'sanitize_file_name' ) );
@@ -397,8 +401,10 @@ class multibyte_patch {
 		}
 		*/
 
+		/* Not needed, isn't actually doing anything
 		if ( method_exists( $this, 'wp_trim_words' ) && false !== $this->conf['patch_wp_trim_words'] )
 			add_filter( 'wp_trim_words', array( $this, 'wp_trim_words' ), 99, 4 );
+		*/
 
 		// add action
 		add_action( 'wp', array( $this, 'query_based_settings' ) );
@@ -409,10 +415,12 @@ class multibyte_patch {
 		if ( method_exists( $this, 'wp_mail' ) && false !== $this->conf['patch_wp_mail'] )
 			add_action( 'phpmailer_init', array( $this, 'wp_mail' ) );
 
+		/* Should be within core
 		if ( method_exists( $this, 'admin_custom_css' ) && false !== $this->conf['patch_admin_custom_css'] ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_custom_css' ), 99 );
 			add_action( 'customize_controls_enqueue_scripts', array( $this, 'admin_custom_css' ), 99 );
 		}
+		*/
 
 		if ( false !== $this->conf['patch_wplink_js'] )
 			add_action( 'wp_default_scripts', array( $this, 'wplink_js' ), 9 );
