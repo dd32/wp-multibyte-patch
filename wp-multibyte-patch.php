@@ -40,7 +40,7 @@ class multibyte_patch {
 		// 'patch_wp_trim_words' => false, // Shouldn't be needed anymore
 		// 'patch_get_comment_excerpt' => true, // Should be done with an excerpt filter
 		// 'patch_dashboard_recent_drafts' => true, // Not needed
-		'patch_process_search_terms' => false,
+		'patch_process_search_terms' => false, // JP ????? Convert "zen-kaku" space to "han-kaku" (U+3000 -> U+0020)
 		// 'patch_admin_custom_css' => false, // Any locale-specific CSS should be in core
 		'patch_wplink_js' => true,
 		'patch_word_count_js' => true,
