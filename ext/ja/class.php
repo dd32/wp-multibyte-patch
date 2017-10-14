@@ -149,6 +149,7 @@ if ( class_exists( 'multibyte_patch' ) ) :
 		wp_enqueue_style( 'wpmp-admin-custom', $url, array(), '20131223' );
 	}
 
+/* No longer needed.
 	function wp_trim_words( $text = '', $num_words = 110, $more = '', $original_text = '' ) {
 		// Translation no longer exists since 4.3 / #30966
 		if ( 'characters' != _x( 'words', 'word count: words or characters?' ) )
@@ -169,7 +170,8 @@ if ( class_exists( 'multibyte_patch' ) ) :
 
 		return $text;
 	}
-
+*/
+	
 	function __construct() {
 		// mbstring functions are always required for ja.
 		$this->mbfunctions_required = true;
