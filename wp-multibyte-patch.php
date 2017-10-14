@@ -41,7 +41,7 @@ class multibyte_patch {
 		'patch_get_comment_excerpt' => true,
 		'patch_dashboard_recent_drafts' => true,
 		'patch_process_search_terms' => false,
-		'patch_admin_custom_css' => false,
+		// 'patch_admin_custom_css' => false, // Any locale-specific CSS should be in core
 		'patch_wplink_js' => true,
 		'patch_word_count_js' => true,
 		// 'patch_force_character_count' => false, // Overrides the translation setting for Words vs Characters
